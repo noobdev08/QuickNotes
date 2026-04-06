@@ -1,0 +1,33 @@
+/*
+  AUTH SETUP - NOTES APP
+
+  1. npm install bcrypt jsonwebtoken
+
+  2. CREATE TABLE IF NOT EXISTS users (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       username TEXT UNIQUE NOT NULL,
+       password TEXT NOT NULL
+     )
+
+  3. POST /register
+     - req.body: username, password
+     - bcrypt.hash(password, 10)
+     - insert into users
+     - return success
+
+  4. POST /login
+     - req.body: username, password
+     - find user by username
+     - bcrypt.compare(password, stored)
+     - jwt.sign({ id: user.id }, SECRET)
+     - return token
+
+  5. middleware/auth.js
+     - get token from Authorization header
+     - jwt.verify(token, SECRET)
+     - valid -> next()
+     - invalid -> 401
+
+  6. protect routes
+     router.get('/notes', authMiddleware, (req, res) => {})
+*/

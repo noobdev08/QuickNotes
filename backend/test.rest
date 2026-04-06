@@ -1,0 +1,42 @@
+### Create user POST /notes
+POST http://localhost:5000/notes
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzc1NDUxNzk4LCJleHAiOjE3NzU1MzgxOTh9.3llJjsCYVu8MomKDtGvZBy9-7PctZUj_TU698rfdIzs
+
+{
+    "content": "I am not very hungry"
+}
+
+### Get Notes GET /notes
+GET http://localhost:5000/notes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc1NDUxODU3LCJleHAiOjE3NzU1MzgyNTd9.ahyrSP8B8e02zxh4gmtjcbzteNW6F7f13fYqfTB8J80
+
+### Delete notes DELETE /notes/:id
+DELETE http://localhost:5000/notes/11
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc1NDUxNzAzLCJleHAiOjE3NzU1MzgxMDN9.jLRfwT1-_UJFcu7yo1p5URTKxFHh4Gz4T3CZOPgQnG0
+
+### update note PUT /notes/:id
+PUT http://localhost:5000/notes/12
+Content-Type: application/json
+
+{
+    "content": "I am NOT hungry"
+}
+
+### LOGIN POST /login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "username": "tester",
+    "password": "testpassword"
+}
+
+### SIGNUP POST /register
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username": "tester2",
+    "password": "testpassword"
+}
