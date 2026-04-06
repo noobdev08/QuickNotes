@@ -9,10 +9,16 @@ router.post('/register', (req, res) => {
     const { username, password } = req.body;
     const hashedPassword = bcrypt.hashSync(password, 8);
 
-    const insertUser = db.prepare(`INSERT INTO users (username, password) VALUES (?,?)`);
-    const result = insertUser.run(username, hashedPassword);
-
-    res.status(201).json({ id: result.lastInsertRowid, username: username });
+    try {
+        const insertUser = db.prepare(`INSERT INTO users (username, password) VALUES (?,?)`)
+        const result = insertUser.run(username, hashedPassword)
+        res.status(201).json({ id: result.lastInsertRowid, username })
+    } catch (err) {
+        if (err.message.includes('UNIQUE constraint failed')) {
+            return res.status(409).json({ message: 'Username already taken' })
+        }
+        res.status(500).json({ message: 'Server error' })
+    }
 })
 
 router.post('/login', (req, res) => {
@@ -33,5 +39,6 @@ router.post('/login', (req, res) => {
         res.status(400).json({message: "Password is incorrect"})
     }
 })
+
 
 export default router;
