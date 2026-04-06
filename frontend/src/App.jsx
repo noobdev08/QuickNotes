@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API = "https://your-render-url.onrender.com"
+const API = "https://quicknotes-kr96.onrender.com/"
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap');

@@ -16,9 +16,10 @@ app.use(express.json())
 app.use('/notes', authenticateToken, noteRoutes);
 app.use('/auth', authRoutes);
 
+app.get('/', (req, res) => {
+    res.json({ message: 'QuickNotes API is running' })
+})
 
 app.listen(PORT, ()=> {
     console.log(`Server Started At: ${PORT}`)
 })
-
-
